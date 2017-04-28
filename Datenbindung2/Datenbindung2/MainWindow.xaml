@@ -1,0 +1,46 @@
+﻿<Window x:Class="Datenbindung2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Datenbindung2"
+        mc:Ignorable="d" FontSize="25"
+        Title="MainWindow" Height="350" Width="525">
+  <Window.Resources>
+    <DataTemplate x:Key="PersonTemplate">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+          <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding Path=Name}"/>
+        <TextBlock Text="{Binding Path=Wohnort}" Grid.Column="1" Margin="10,0"/>
+        <TextBlock Name="TBAlter" Text="{Binding Path=Alter}" Grid.Column="2"/>
+
+      </Grid>
+
+      <DataTemplate.Triggers>
+        <DataTrigger Binding="{Binding Path=IstErfahren}" Value="True">
+          <Setter TargetName="TBAlter" Property="FontWeight" Value="Bold"/>
+          <Setter TargetName="TBAlter" Property="Foreground" Value="Green"/>
+        </DataTrigger>
+      </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:Person}">
+      <TextBlock Text="{Binding Path=Name}"/>
+    </DataTemplate>
+
+  </Window.Resources>
+  <StackPanel Grid.IsSharedSizeScope="True">
+    <TextBlock Text="{Binding Path=Mitarbeiter[0].Name[0]}" Margin="5"/>
+    <ListBox Name="LB" ItemsSource="{Binding Path=Mitarbeiter}" 
+             ItemTemplate="{StaticResource PersonTemplate}"/>
+
+    <Label Content="{Binding ElementName=LB, Path=SelectedValue}" ContentTemplate="{StaticResource PersonTemplate}" Margin="5"/>
+    <Label Content="{Binding ElementName=LB, Path=SelectedValue}"  Margin="5"/>
+    <Button Content="Die Jahre vergehen..." Click="AlterErhöhen" Margin="5"/>
+    <Button Content="Neuer Mitarbeiter" Click="NeuerMitarbeiter" Margin="5"/>
+  </StackPanel>
+</Window>

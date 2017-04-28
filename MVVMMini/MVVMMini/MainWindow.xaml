@@ -1,0 +1,99 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMMini"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+        x:Class="MVVMMini.MainWindow"
+        mc:Ignorable="d" FontSize="25"
+        Title="MainWindow" Height="350" Width="525">
+  <Window.Resources>
+    <DataTemplate x:Key="DataTemplate1">
+      <Button Content="{Binding DisplayText}" ToolTip="{Binding ToolTipText}" Command="{Binding}" Width="40" Height="40" Margin="2"/>
+    </DataTemplate>
+    <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+      <UniformGrid/>
+    </ItemsPanelTemplate>
+  </Window.Resources>
+  <Window.DataContext>
+    <local:ViewModel/>
+  </Window.DataContext>
+  <Window.InputBindings>
+    <KeyBinding Key="Add" Command="{Binding PlusCommand}"/>
+  </Window.InputBindings>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="39*"/>
+      <RowDefinition Height="35*"/>
+      <RowDefinition Height="36*"/>
+      <RowDefinition Height="39*"/>
+      <RowDefinition Height="96*"/>
+      <RowDefinition Height="57*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="73*"/>
+      <ColumnDefinition Width="127*"/>
+      <ColumnDefinition Width="124*"/>
+      <ColumnDefinition Width="127*"/>
+      <ColumnDefinition Width="66*"/>
+    </Grid.ColumnDefinitions>
+    <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Zahl1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <TextBox Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Zahl2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <TextBlock Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Ergebnis}"/>
+    <Button Content="+" Grid.Column="1" Grid.Row="4" Command="{Binding PlusCommand}"/>
+    <Button Content="-" Grid.Column="3" Grid.Row="4" Command="{Binding MinusCommand}"/>
+    <Slider Grid.Column="3" Grid.Row="1" Maximum="10000" Value="{Binding Zahl2}">
+      <i:Interaction.Behaviors>
+        <local:SliderMouseWheelBehavior/>
+      </i:Interaction.Behaviors>
+    </Slider>
+    <Slider Grid.Column="1" Grid.Row="1" Maximum="10000" Value="{Binding Zahl1}">
+      <i:Interaction.Behaviors>
+        <local:SliderMouseWheelBehavior/>
+      </i:Interaction.Behaviors>
+    </Slider>
+    <Menu Grid.ColumnSpan="5">
+      <MenuItem Header="Rechnen">
+        <MenuItem Command="{Binding PlusCommand}" Header="+" ToolTip="Addition"/>
+        <MenuItem Command="{Binding MinusCommand}" Header="-" ToolTip="Subtraktion"/>
+      </MenuItem>
+      <MenuItem ItemsSource="{Binding Commands}" Header="Rechnen 2">
+        <MenuItem.ItemContainerStyle>
+          <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="Header" Value="{Binding DisplayText}"/>
+            <Setter Property="ToolTip" Value="{Binding ToolTipText}"/>
+          </Style>
+        </MenuItem.ItemContainerStyle>
+      </MenuItem>
+    </Menu>
+    <ItemsControl Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="133"
+                  Margin="10,10,0,0" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Top"
+                  Width="231" 
+                  ItemsSource="{Binding Commands}" 
+                  ItemTemplate="{DynamicResource DataTemplate1}" 
+                  ItemsPanel="{DynamicResource ItemsPanelTemplate1}"/>
+    <Ellipse Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="94" Margin="21,36,0,0" Grid.Row="5" Grid.RowSpan="2" Stroke="Black" VerticalAlignment="Top" Width="179">
+      <Ellipse.Fill>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+          <GradientStop Color="#FFFFC33A" Offset="0"/>
+          <GradientStop Color="#FFFF1010" Offset="1"/>
+        </LinearGradientBrush>
+      </Ellipse.Fill>
+      <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseEnter">
+          <i:InvokeCommandAction Command="{Binding PlusCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="MouseLeave">
+          <i:InvokeCommandAction Command="{Binding MinusCommand}" />
+        </i:EventTrigger>
+      </i:Interaction.Triggers>
+      <i:Interaction.Behaviors>
+        <ei:MouseDragElementBehavior/>
+      </i:Interaction.Behaviors>
+    </Ellipse>
+
+  </Grid>
+</Window>

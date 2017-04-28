@@ -1,0 +1,118 @@
+﻿<Window x:Class="WpfBasics.HeaderedContentControlsBeispiel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBasics"
+        mc:Ignorable="d"
+        Title="HeaderedContentControlsBeispiel" Height="300" Width="300">
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+    <Expander  Margin="10">
+      <Expander.Header>
+        <StackPanel Orientation="Horizontal">
+          <Rectangle Width="100" Height="25">
+            <Rectangle.Fill>
+              <LinearGradientBrush >
+                <GradientStop Offset="0" Color="Red"/>
+                <GradientStop Offset="0.5" Color="Yellow"/>
+                <GradientStop Offset="1" Color="Green"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <TextBlock Text="Farben" Margin="10,0" VerticalAlignment="Center"/>
+        </StackPanel>
+      </Expander.Header>
+      <StackPanel Margin="5">
+        <RadioButton Content="Rot"/>
+        <RadioButton Content="Gelb"/>
+        <RadioButton Content="Grün"/>
+      </StackPanel>
+    </Expander>
+    <Expander  Margin="10">
+      <Expander.Header>
+        <StackPanel Orientation="Horizontal">
+          <Rectangle Width="100" Height="25">
+            <Rectangle.Fill>
+              <LinearGradientBrush >
+                <GradientStop Offset="0" Color="Red"/>
+                <GradientStop Offset="0.5" Color="Yellow"/>
+                <GradientStop Offset="1" Color="Green"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <TextBlock Text="Farben" Margin="10,0" VerticalAlignment="Center"/>
+        </StackPanel>
+      </Expander.Header>
+      <StackPanel Margin="5">
+        <RadioButton Content="Rot"/>
+        <RadioButton Content="Gelb"/>
+        <RadioButton Content="Grün"/>
+      </StackPanel>
+    </Expander>
+    <Expander  Margin="10">
+      <Expander.Header>
+        <StackPanel Orientation="Horizontal">
+          <Rectangle Width="100" Height="25">
+            <Rectangle.Fill>
+              <LinearGradientBrush >
+                <GradientStop Offset="0" Color="Red"/>
+                <GradientStop Offset="0.5" Color="Yellow"/>
+                <GradientStop Offset="1" Color="Green"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <TextBlock Text="Farben" Margin="10,0" VerticalAlignment="Center"/>
+        </StackPanel>
+      </Expander.Header>
+      <StackPanel Margin="5">
+        <RadioButton Content="Rot"/>
+        <RadioButton Content="Gelb"/>
+        <RadioButton Content="Grün"/>
+      </StackPanel>
+    </Expander>
+    <Expander  Margin="10">
+      <Expander.Header>
+        <StackPanel Orientation="Horizontal">
+          <Rectangle Width="100" Height="25">
+            <Rectangle.Fill>
+              <LinearGradientBrush >
+                <GradientStop Offset="0" Color="Red"/>
+                <GradientStop Offset="0.5" Color="Yellow"/>
+                <GradientStop Offset="1" Color="Green"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <TextBlock Text="Farben" Margin="10,0" VerticalAlignment="Center"/>
+        </StackPanel>
+      </Expander.Header>
+      <StackPanel Margin="5">
+        <RadioButton Content="Rot"/>
+        <RadioButton Content="Gelb"/>
+        <RadioButton Content="Grün"/>
+      </StackPanel>
+    </Expander>
+    <Expander  Margin="10">
+      <Expander.Header>
+        <StackPanel Orientation="Horizontal">
+          <Rectangle Width="100" Height="25">
+            <Rectangle.Fill>
+              <LinearGradientBrush >
+                <GradientStop Offset="0" Color="Red"/>
+                <GradientStop Offset="0.5" Color="Yellow"/>
+                <GradientStop Offset="1" Color="Green"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <TextBlock Text="Farben" Margin="10,0" VerticalAlignment="Center"/>
+        </StackPanel>
+      </Expander.Header>
+      <StackPanel Margin="5">
+        <RadioButton Content="Rot"/>
+        <RadioButton Content="Gelb"/>
+        <RadioButton Content="Grün"/>
+      </StackPanel>
+    </Expander>
+  </StackPanel>
+  </ScrollViewer>
+</Window>
